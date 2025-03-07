@@ -1,14 +1,23 @@
 import gradio as gr
 from transformers import pipeline
 import torch
+from huggingface_hub import login
+import os
 
+login(token = os.getenv('MODEL_REPO_TK'))
 model_id = "meta-llama/Llama-3.2-1B-Instruct"
-pipe = pipeline(
-    "text-generation",
-    model=model_id,
-    torch_dtype=torch.bfloat16,
-    device_map="auto",
-)
+model_loaded = False
+while not model_loaded:
+    try:
+        pipe = pipeline(
+            "text-generation",
+            model=model_id,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+        )
+        model_loaded = True
+    except Exception as e:
+        print('Error loading model: ', e)
 
 def rewrite(query):
     outputs = pipe(
