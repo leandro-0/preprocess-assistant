@@ -389,3 +389,5 @@ embeddings-*.npy
 freeze.txt
 queries/
 index-*.faiss
+.flashrank_cache/
+*.pkl
