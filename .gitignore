@@ -389,3 +389,7 @@ embeddings-*.npy
 freeze.txt
 queries/
 index-*.faiss
+cohere-chunks-500-50-nomic.pkl
+new-chunks-best-preprocess-512-50-nomic.pkl
+best-preprocess-index-chunks-512-50-nomic-second.faiss
+store-better-preprocess.pkl
